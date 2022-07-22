@@ -8,6 +8,7 @@ persuade more clients to deposit money into the bank, thus increasing the bank's
 
 * [Technologies](#technologies)
 * [Installation](#installation)
+* [Model](#model)
 * [Credits and Acknowledgments](#credits-and-acknowledgements)
 
 ## Technologies
@@ -30,6 +31,10 @@ persuade more clients to deposit money into the bank, thus increasing the bank's
 1) Go to [Google Colab](https://colab.research.google.com/) and sign in with your Google account
 2) Download the models folder from the repository and upload it in Google Colab
 3) Run the model
+
+## Model
+
+![Model](statics/model.png)
 
 ## Credits and Acknowledgements
 
