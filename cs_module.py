@@ -236,12 +236,14 @@ class ModelDevelopment:
         
 #         plt.figure()
 #         plt.plot(hist.history['loss'])
-#         plt.plot(hist.history['val_loss'])
+#         plt.plot(hist.history['val_loss])
+#         plt.xlabel('Epoch')
 #         plt.legend(['Training Loss','Validation Loss'])
 #         plt.show()
 
 #         plt.figure()
 #         plt.plot(hist.history['acc'])
 #         plt.plot(hist.history['val_acc'])
+#         plt.xlabel('Epoch')
 #         plt.legend(['Training Accuracy','Validation Accuracy'])
 #         plt.show()

@@ -6,29 +6,17 @@ Created on Fri Jul 22 09:36:16 2022
 """
 
 from sklearn.metrics import confusion_matrix, classification_report, ConfusionMatrixDisplay
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder
-from sklearn.experimental import enable_iterative_imputer
-from sklearn.impute import IterativeImputer,KNNImputer
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
 
-from tensorflow.keras.layers import Dense, Dropout, BatchNormalization
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping
-from tensorflow.keras import Sequential, Input
 from tensorflow.keras.utils import plot_model
 
 from cs_module import EDA, ModelDevelopment
 import matplotlib.pyplot as plt
 from datetime import datetime
-import scipy.stats as ss
 import missingno as msno
-import seaborn as sns
 import pandas as pd
 import numpy as np
-import pickle
 import os
 
 #%% Constants
@@ -62,14 +50,14 @@ con.remove('id')
 
 df[cat].describe(include='all').T
 
-# eda.countplot(cat, df)
-# eda.distplot(con, df)
+eda.countplot(cat, df)
+eda.distplot(con, df)
 
-# df[cat].boxplot()
-# df[con].boxplot()
+df[cat].boxplot()
+df[con].boxplot()
 
-# msno.matrix(df)
-# msno.bar(df)
+msno.matrix(df)
+msno.bar(df)
 
 #%% Step 3) Data Cleaning
 
@@ -111,33 +99,33 @@ df_ii.duplicated().sum()
 
 #%% Step 4) Features Selection
 
-# selected_features = eda.cat_vs_cat_features_selection(df, cat,
-#                                                       'prev_campaign_outcome',
-#                                                       [],target_score=0.01)
+selected_features = eda.cat_vs_cat_features_selection(df, cat,
+                                                      'prev_campaign_outcome',
+                                                      [],target_score=0.01)
 
 
-# selected_features = eda.cat_vs_con_features_selection(df, con,
-#                                                       'prev_campaign_outcome',
-#                                                       selected_features,
-#                                                       target_score=0.04,
-#                                                       solver='saga')
+selected_features = eda.cat_vs_con_features_selection(df, con,
+                                                      'prev_campaign_outcome',
+                                                      selected_features,
+                                                      target_score=0.04,
+                                                      solver='saga')
 
-# print(selected_features)
+print(selected_features)
 
-selected_features = ['job_type',
- 'marital',
- 'education',
- 'default',
- 'housing_loan',
- 'personal_loan',
- 'communication_type',
- 'month',
- 'prev_campaign_outcome',
- 'day_of_month',
- 'num_contacts_in_campaign',
- 'num_contacts_prev_campaign',
- 'term_deposit_subscribed',
- 'customer_age']
+# selected_features = ['job_type',
+#  'marital',
+#  'education',
+#  'default',
+#  'housing_loan',
+#  'personal_loan',
+#  'communication_type',
+#  'month',
+#  'prev_campaign_outcome',
+#  'day_of_month',
+#  'num_contacts_in_campaign',
+#  'num_contacts_prev_campaign',
+#  'term_deposit_subscribed',
+#  'customer_age']
 
 # Selected features are as listed in the variable selected_features
 
