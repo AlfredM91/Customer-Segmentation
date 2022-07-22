@@ -35,6 +35,10 @@ persuade more clients to deposit money into the bank, thus increasing the bank's
 ## Model
 
 ![Model](statics/model.png)
+![Epoch Accuracy](statics/epoch_acc.png)
+![Epoch Loss](statics/epoch_loss.png)
+![CMap](statics/cmap.png)
+![Model Performance](statics/performance.png)
 
 ## Credits and Acknowledgements
 
