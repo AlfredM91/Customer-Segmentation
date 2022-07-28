@@ -99,16 +99,18 @@ df_ii.duplicated().sum()
 
 #%% Step 4) Features Selection
 
-selected_features = eda.cat_vs_cat_features_selection(df, cat,
-                                                      'prev_campaign_outcome',
-                                                      [],target_score=0.01)
+target = 'prev_campaign_outcome'
+
+selected_features = eda.cat_vs_cat_features_selection(df, cat,target,[],
+                                                      target_score=0.01)
 
 
-selected_features = eda.cat_vs_con_features_selection(df, con,
-                                                      'prev_campaign_outcome',
+selected_features = eda.cat_vs_con_features_selection(df,con,target,
                                                       selected_features,
                                                       target_score=0.04,
                                                       solver='saga')
+
+selected_features.remove(target)
 
 print(selected_features)
 
@@ -120,7 +122,7 @@ print(selected_features)
 #  'personal_loan',
 #  'communication_type',
 #  'month',
-#  'prev_campaign_outcome',
+#  'prev_campaign_outcome', - should not be in here
 #  'day_of_month',
 #  'num_contacts_in_campaign',
 #  'num_contacts_prev_campaign',
@@ -132,7 +134,7 @@ print(selected_features)
 #%% Step 5) Data Preprocessing
 
 X = df_ii[selected_features]
-y = df_ii['prev_campaign_outcome']
+y = df_ii[target]
 
 X = eda.min_max_scaler(X)
 y = eda.min_max_scaler(np.expand_dims(y,axis=-1))
